@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Movie Spin</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/css/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/twenty.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="assets/css/ie/respond.min.js"></script><![endif]--> 
+        
+		<meta property="og:image" content="/resources/images/like.png" />
+		<meta property="og:title" content="MovieSpin: Find the movies YOU want to watch." />
+		<meta property="og:description" content="MovieSpin lets you easily find good new movies to watch." />
+	</head>
+	<body class="index">
+		<div id="page-wrapper">
+				<section id="banner">
+					<div class="inner" id="innerBlock">
+						<header id="welcomeHeader">
+								<h2>MOVIE SPIN</h2>
+						</header>
+						<div id="welcomeDiv">
+								<p>FIND THE MOVIES <strong>YOU</strong> WANT TO WATCH.</p>
+							<footer>
+								<ul class="buttons vertical">
+									<li><button class="button fit scrolly" id="getStarted">Get Started</button></li>
+								</ul>
+							</footer>
+						</div>
+						
+						<div id="welcomeBackDiv" style="display:none;">
+								<p>WELCOME BACK TO MOVIE SPIN.</p>
+							<footer>
+								<ul class="buttons vertical">
+									<li><button class="button fit scrolly" id="getRestarted">Continue Browsing</button></li>
+								</ul>
+							</footer>
+						</div>
+						
+						<div id="startForm" style="display:none;">
+							<div class="as-input-wrapper">
+								<input id="addMovieText" type="text" class="as-autosuggest" placeholder="Enter 5 movies you like.">
+								<input id="addMovieID" type="hidden">
+								<div class="as-dropdown">
+									<ul id="addMovieSuggestions" class="as-result">
+									</ul>
+								</div>
+							</div>
+							<button id="addMovieButton" style="display:none;" class="button">Add</button>
+						</div>
+						
+						<div id="nextMovie" style="display: none;">
+							<input type="hidden" id="nextMovieID">
+							<header>
+								<h2 id="nextMovieTitle" style="font-size: 26px;"> </h2>
+							</header>
+							<div class="row">
+								<div id="nextMovieLeft">
+									<img id="nextMoviePoster" src="">
+								</div>
+								<div id="nextMovieRight">
+									<p id="nextMovieDescription"> </p><br><br>
+									<p id="nextMovieMetadata">
+										<strong>Genre: </strong><span id="nextMovieGenres"></span><br>
+										<strong>Actors: </strong><span id="nextMovieActors"></span><br>
+										<strong>Rating: </strong><span id="nextMovieRating"></span><br>
+										<strong>Runtime: </strong><span id="nextMovieRuntime"></span>
+									</p>
+									<div id="referralLinks"></div>
+								</div>
+
+								<button id="watchLater" class="button" title="Try using the enter key!">Watch Later</button>
+							</div>
+						</div>
+						
+						<div id="nextMovieLoading" style="display:none;">
+							<p>
+								loading...
+							</p>
+						</div>
+						
+						<div id="selectionDiv" style = "display:none">
+							<header>
+								<h2>MOVIE SWAG</h2>
+							</header>
+						</div>
+
+					</div>
+
+				</section>
+		</div>
+		<button id="resetUser" class="button">Reset</button>
+		<img id="dislikeImg" style="display:none;" src="images/dislike.png" title="Try using the right arrow key!">
+		<img id="likeImg" style="display:none;" src="images/like.png" title="Try using the left arrow key!">
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+        <script type="text/javascript" src="js/taffy-min.js"></script>
+        <script type="text/javascript" src="js/api.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

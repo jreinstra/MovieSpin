@@ -7,7 +7,9 @@ var addMovieCounter = -1;
 
 var currentKey = null;
 
-initMoviespin();
+$(document).ready(function() {
+    initMoviespin();
+});
 
 function initMoviespin() {
    result = MoviesAPI.getChoices();
@@ -68,18 +70,15 @@ function addMovieKeyPressed(keyID) {
 }
 
 function watchLater() {
-	swipeDown((window.innerHeight), 2, "1s");
-	_gaq.push(['_trackEvent', 'movie', 'watch_later']);
+	swipeDown((window.innerHeight), null, "1s");
 }
 
 function swipeLeft() {
-	swipe(-(window.innerWidth), 1, "1s");
-	_gaq.push(['_trackEvent', 'movie', 'like']);
+	swipe(-(window.innerWidth), true, "1s");
 }
 
 function swipeRight() {
-	swipe(window.innerWidth, 0, "1s");
-	_gaq.push(['_trackEvent', 'movie', 'dislike']);
+	swipe(window.innerWidth, false, "1s");
 }
 
 function swipe(xPos, likesMovie, duration) {
@@ -125,21 +124,20 @@ function animateY(tile, yPos, time, callback) {
 }
 
 var autoSuggest = debounce(function() {
-	keyID = currentKey;
+	//keyID = currentKey;
 	//if(keyID != "Down" && keyID != "Up" && keyID != "Enter" && keyID != "Left" && keyID != "Right") {
 		var text = document.getElementById("addMovieText").value;
-		var params = {"q":text};
-		apiCall("autoSuggest", params, function(result) {
+		MoviesAPI.autoSuggest(text, function(result) {
 			var suggestions = "";
 			for(var i in result) {
 				suggestions += "<li class=\"as-suggestion\" value=\"" + result[i]["ID"] + "\">" + result[i]["Name"] + "</li>";
 			}
 			document.getElementById("addMovieSuggestions").innerHTML = suggestions;
 			addSuggestionListeners();
-		}, true);
+		});
 		addMovieCounter = -1;
 	//}
-}, 300);
+}, 100);
 
 function addSuggestionListeners() {
 	var classname = document.getElementsByClassName("as-suggestion");
@@ -212,8 +210,7 @@ function nextMovie() {
 }
 
 function likeMovie(movieID, likesMovie) {
-	var params = {"MovieID":movieID, "LikesMovie":likesMovie};
-	apiCall("likeMovie", params, function(result) {
+	MoviesAPI.likeMovie(movieID, likesMovie, function(result) {
 		document.getElementById("addMovieButton").style.display = "none";
 		document.getElementById("addMovieID").value = "";
 		moviesAdded++;
@@ -355,8 +352,7 @@ document.getElementById("addMovieText").addEventListener("keydown", function(dat
 });
 
 document.getElementById("addMovieButton").addEventListener("click", function(data) {
-	likeMovie(document.getElementById("addMovieID").value, 1);
-	_gaq.push(['_trackEvent', 'movie', 'add']);
+	likeMovie(document.getElementById("addMovieID").value, true);
 });
 
 document.getElementById("likeImg").addEventListener("click", function(data) {
@@ -373,9 +369,9 @@ document.getElementById("dislikeImg").addEventListener("click", function(data) {
 
 document.getElementById("resetUser").addEventListener("click", function(data) {
 	document.cookie="RandKey=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	apiCall("resetUser", null, function() {
+	MoviesAPI.resetUser(function() {
 		location.reload();
-	}, false);
+	});
 });
 
 document.getElementById("watchLater").addEventListener("click", function(data) {

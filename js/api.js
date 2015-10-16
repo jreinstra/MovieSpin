@@ -1,4 +1,5 @@
 var db = null;
+var myMovies = {"saved":[], "liked":[], "disliked":[]};
 
 var initCallback = function(data) {
     console.log(typeof(data))
@@ -6,6 +7,7 @@ var initCallback = function(data) {
     //data = JSON.parse(data);
     console.log("parsed to JSON");
     db = TAFFY(data);
+    console.log(db().first());
     console.log("declared taffy database");
 };
 
@@ -14,6 +16,11 @@ $(document).ready(function() {
 });
 
 function initDatabase(callback) {
+    if(localStorage["myMovies"]) {
+        myMovies = JSON.parse(localStorage["myMovies"]);
+    }
+    
+    
     if(!localStorage["moviesData"]) {
         console.log("loading...");
         httpGetAsync("js/movies.json", function(text) {
@@ -30,8 +37,39 @@ function initDatabase(callback) {
 
 var MoviesAPI = {
     getChoices: function() {
-        return {"Length":8};
-    }
+        var length = myMovies["liked"].length + myMovies["disliked"].length;
+        return {"Length":length};
+    },
+    
+    autoSuggest: function(text, callback) {
+        var query = db().filter({Title:{likenocase:text}}).order("PopularityScore desc").limit(5).get();
+        
+        var result = [];
+        for(var i in query) {
+            var entry = query[i];
+            result.push({"ID":entry.MovieID, "Name":entry.Title});
+        }
+        callback(result);
+    },
+    
+    likeMovie: function(movieID, likesMovie, callback) {
+        if(likesMovie == null) {
+            myMovies["saved"].push(movieID);
+        }
+        else if(likesMovie === true) {
+            myMovies["disliked"].push(movieID);
+        }
+        else {
+            myMovies["liked"].push(movieID);
+        }
+        localStorage["myMovies"] = JSON.stringify(myMovies);
+        callback();
+    },
+    
+    resetUser: function(callback) {
+        localStorage.removeItem("myMovies");
+        callback();
+    },
 }
 
 function httpGet(theUrl) {

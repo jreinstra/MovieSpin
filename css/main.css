@@ -93,17 +93,19 @@
 	margin-bottom: 0px;
 }
 
-#nextMovieLeft {
-	display: inline-block;
-	width: 25%;
+#nextMovieInfo {
+    margin-top: 5px;
 }
 
-#nextMoviePoster {
-	width: 100%;
+#nextMovieLeft {
+	display: inline-block;
+	width: 60%;
+    padding-top: 0px;
 }
 
 #nextMovieRight {
-	width: 70%;
+    padding-top: 15px;
+	width: 40%;
 }
 
 #nextMovieMetadata, #nextMovieDescription {

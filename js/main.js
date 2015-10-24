@@ -42,9 +42,8 @@ function keyPressed(keyID) {
 }
 
 function addMovieKeyPressed(keyID) {
-	//alert(keyID);
+    console.log(keyID);
 	var suggestions = document.getElementById("addMovieSuggestions").childNodes;
-	//alert(JSON.stringify(suggestions));
 	if(suggestions.length > 0) {
 		if(keyID == "Up" && addMovieCounter >= 0) {
 			addMovieCounter--;
@@ -67,6 +66,7 @@ function addMovieKeyPressed(keyID) {
 			}
 		}
 	}
+    console.log(addMovieCounter);
 }
 
 function watchLater() {
@@ -124,8 +124,8 @@ function animateY(tile, yPos, time, callback) {
 }
 
 var autoSuggest = debounce(function() {
-	//keyID = currentKey;
-	//if(keyID != "Down" && keyID != "Up" && keyID != "Enter" && keyID != "Left" && keyID != "Right") {
+	var keyID = currentKey;
+	if(keyID != "Down" && keyID != "Up" && keyID != "Enter" && keyID != "Left" && keyID != "Right") {
 		var text = document.getElementById("addMovieText").value;
 		MoviesAPI.autoSuggest(text, function(result) {
 			var suggestions = "";
@@ -136,7 +136,7 @@ var autoSuggest = debounce(function() {
 			addSuggestionListeners();
 		});
 		addMovieCounter = -1;
-	//}
+	}
 }, 100);
 
 function addSuggestionListeners() {
@@ -158,17 +158,19 @@ function nextMovie() {
 	document.getElementById("nextMovie").style.display = "none";
 	document.getElementById("nextMovieLoading").style.display = "";
 	
-	apiCall("getNextMovie", null, function(result) {
-		console.log(result);
-		var metadata = JSON.parse(result["MetaData"]);
-		var title = metadata["Title"] + " (" + metadata["Year"] + ")";
+	//apiCall("getNextMovie", null, function(result) {
+    MoviesAPI.getNextMovie(function(result) {
+		var title = result["Title"] + " (" + result["Year"] + ")";
 		document.getElementById("nextMovieTitle").innerHTML = title;
-		
 		var titleFontSize = Math.floor(95.0/(title.length));
 		if(titleFontSize > 7) titleFontSize = 7;
 		document.getElementById("nextMovieTitle").style["font-size"] = titleFontSize + "vw";
-		document.getElementById("nextMoviePoster").src = "/media/posters/" + result["MovieID"] + ".jpg";
-		document.getElementById("nextMovieDescription").innerHTML = metadata["Description"] + "<br><br>";
+        
+        document.getElementById("nextMovieDescription").innerHTML = result["Description"];
+        //http://www.imdb.com/title/
+		//document.getElementById("nextMoviePoster").src = "/media/posters/" + result["MovieID"] + ".jpg";
+        //document.getElementById("nextMoviePoster").src = "http://www.imdb.com/title/" + result["MovieID"] + "/";
+        //console.log(httpGet("http://www.imdb.com/title/" + result["MovieID"] + "/"));
 		document.getElementById("nextMovieID").value = result["MovieID"];
 		document.getElementById("nextMovie").style.display = "";
 		document.getElementById("nextMovieLoading").style.display = "none";
@@ -176,8 +178,8 @@ function nextMovie() {
 		document.getElementById("likeImg").style.display = "";
 		document.getElementById("dislikeImg").style.display = "";
 		
-		document.getElementById("nextMovieRating").innerHTML = metadata["Rating"];
-		document.getElementById("nextMovieRuntime").innerHTML = metadata["Runtime"];
+		document.getElementById("nextMovieRating").innerHTML = result["Rating"];
+		document.getElementById("nextMovieRuntime").innerHTML = result["Runtime"];
 		
 		var actors = JSON.parse(result["Actors"]);
 		var actorsString = "";
@@ -206,7 +208,8 @@ function nextMovie() {
 			animationActive = false;
 		});
 		allowNextMovieInput = true;
-	}, true);
+    });
+	//}, true);
 }
 
 function likeMovie(movieID, likesMovie) {

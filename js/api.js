@@ -2,13 +2,7 @@ var db = null;
 var myMovies = {"saved":[], "liked":[], "disliked":[]};
 
 var initCallback = function(data) {
-    console.log(typeof(data))
-    console.log("about to store db");
-    //data = JSON.parse(data);
-    console.log("parsed to JSON");
     db = TAFFY(data);
-    console.log(db().first());
-    console.log("declared taffy database");
 };
 
 $(document).ready(function() {
@@ -22,15 +16,12 @@ function initDatabase(callback) {
     
     
     if(!localStorage["moviesData"]) {
-        console.log("loading...");
         httpGetAsync("js/movies.json", function(text) {
-            console.log("loaded.");
             localStorage["moviesData"] = text;
             callback(text);
         });
     }
     else {
-        console.log("just using local storage...");
         callback(localStorage["moviesData"]);
     }
 }
@@ -70,6 +61,10 @@ var MoviesAPI = {
         localStorage.removeItem("myMovies");
         callback();
     },
+    
+    getNextMovie: function(callback) {
+        callback(recommend(myMovies));
+    }
 }
 
 function httpGet(theUrl) {

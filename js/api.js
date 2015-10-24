@@ -63,7 +63,7 @@ var MoviesAPI = {
     },
     
     getNextMovie: function(callback) {
-        callback(recommend(myMovies));
+        recommend(myMovies, callback);
     }
 }
 

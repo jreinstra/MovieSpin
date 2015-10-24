@@ -42,7 +42,6 @@ function keyPressed(keyID) {
 }
 
 function addMovieKeyPressed(keyID) {
-    console.log(keyID);
 	var suggestions = document.getElementById("addMovieSuggestions").childNodes;
 	if(suggestions.length > 0) {
 		if(keyID == "Up" && addMovieCounter >= 0) {
@@ -66,7 +65,6 @@ function addMovieKeyPressed(keyID) {
 			}
 		}
 	}
-    console.log(addMovieCounter);
 }
 
 function watchLater() {
@@ -87,9 +85,7 @@ function swipe(xPos, likesMovie, duration) {
 	animate(tile, xPos, duration, function() {
 		if(xPos > 0) animate(tile, -xPos, "0s", null);
 		likeMovie(document.getElementById("nextMovieID").value, likesMovie);
-		setTimeout(function() {
-			nextMovie();
-		}, 50);
+        nextMovie();
 	});
 }
 
@@ -99,9 +95,7 @@ function swipeDown(yPos, likesMovie, duration) {
 	animateY(tile, yPos, duration, function() {
 		animate(tile, -window.innerWidth, "0s", null);
 		likeMovie(document.getElementById("nextMovieID").value, likesMovie);
-		setTimeout(function() {
-			nextMovie();
-		}, 50);
+		nextMovie();
 	});
 }
 
@@ -158,7 +152,10 @@ function nextMovie() {
 	document.getElementById("nextMovie").style.display = "none";
 	document.getElementById("nextMovieLoading").style.display = "";
 	
-	//apiCall("getNextMovie", null, function(result) {
+    setTimeout(fetchMovie, 50);
+}
+
+function fetchMovie() {
     MoviesAPI.getNextMovie(function(result) {
 		var title = result["Title"] + " (" + result["Year"] + ")";
 		document.getElementById("nextMovieTitle").innerHTML = title;
@@ -209,7 +206,6 @@ function nextMovie() {
 		});
 		allowNextMovieInput = true;
     });
-	//}, true);
 }
 
 function likeMovie(movieID, likesMovie) {
@@ -217,7 +213,7 @@ function likeMovie(movieID, likesMovie) {
 		document.getElementById("addMovieButton").style.display = "none";
 		document.getElementById("addMovieID").value = "";
 		moviesAdded++;
-		if(moviesAdded >= 5) {
+		if(moviesAdded == 5) {
 			document.getElementById("startForm").style.display = "none";
 			document.getElementById("welcomeHeader").style.display = "none";
 			nextMovie();

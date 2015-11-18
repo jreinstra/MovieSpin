@@ -12,6 +12,7 @@
 		<!--[if lte IE 8]><script src="assets/css/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="css/twenty.css" />
 		<link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie/v9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="assets/css/ie/respond.min.js"></script><![endif]--> 
@@ -21,6 +22,7 @@
 		<meta property="og:description" content="MovieSpin lets you easily find good new movies to watch." />
 	</head>
 	<body class="index">
+        <div class="overlay" style="display:none;"></div>
 		<div id="page-wrapper">
 				<section id="banner">
 					<div class="inner" id="innerBlock">
@@ -75,8 +77,6 @@
 									</p>
 									<div id="referralLinks"></div>
 								</div>
-
-								<button id="watchLater" class="button" title="Try using the enter key!">Watch Later</button>
 							</div>
 						</div>
 						
@@ -92,13 +92,23 @@
 							</header>
 						</div>
 
-					</div>
-
+					</div><!--
+                    <button id="openSaved" class="button">Open Saved</button>
+                    <div id="savedList" class="overlayMessage" style="display:none">
+                        <ul>
+                            <li>Indiana Jones 7</li>
+                            <li>Kung Fury</li>
+                            <li>Ant Man</li>
+                            <li>The Man with the Dragon Tattoo 2</li>
+                        </ul>
+                        <a href="#"><span id="closeSaved" class="fa fa-times fa-lg"></span></a>
+                    </div>-->
 				</section>
 		</div>
 		<button id="resetUser" class="button">Reset</button>
 		<img id="dislikeImg" style="display:none;" src="images/dislike.png" title="Try using the right arrow key!">
 		<img id="likeImg" style="display:none;" src="images/like.png" title="Try using the left arrow key!">
+        <img id="watchlaterImg" style="display:none;" src="images/watchlater.png" title="Try using the enter key!">
         
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     

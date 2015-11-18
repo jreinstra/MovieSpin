@@ -48,10 +48,10 @@ var MoviesAPI = {
             myMovies["saved"].push(movieID);
         }
         else if(likesMovie === true) {
-            myMovies["disliked"].push(movieID);
+            myMovies["liked"].push(movieID);
         }
         else {
-            myMovies["liked"].push(movieID);
+            myMovies["disliked"].push(movieID);
         }
         localStorage["myMovies"] = JSON.stringify(myMovies);
         callback();

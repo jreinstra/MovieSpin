@@ -36,9 +36,7 @@ function getMovieScore(movie, choices) {
     var genScore = listScore(movie, choices, "Genres");
     var popScore = movie["PopularityScore"];
     
-    var result = 100 * actScore + 200 * genScore + 40 * popScore;
-    //console.log(movie["Title"]);
-    //console.log(result);
+    var result = 100 * actScore + 200 * genScore;// + 40 * popScore; - turns out it works pretty well without pop score
     return result;
 }
 
@@ -68,15 +66,20 @@ function itemScore(item, choices, key) {
                 }
             }
         }
+        var result;
         if(netOverlaps > 0) {
-            itemsCache[item] = 100.0 - (70.0 / netOverlaps);
+            result = 100.0 - (70.0 / netOverlaps);
         }
         else if(netOverlaps < 0) {
-            itemsCache[item] = (-70.0 / netOverlaps) - 100.0;
+            result = (-70.0 / netOverlaps) - 100.0;
         }
         else {
-            itemsCache[item] = 0;
+            result = 0;
         }
+        itemsCache[item] = result;
+        return result;
     }
-    return itemsCache[item];
+    else {
+        return itemsCache[item];
+    }
 }

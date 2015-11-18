@@ -11,6 +11,16 @@ $(document).ready(function() {
     initMoviespin();
 });
 
+$("#openSaved").click(function() {
+    $("#openSaved").hide();
+    $("#savedList, .overlay").show();
+});
+
+$("#closeSaved").click(function() {
+    $("#openSaved").show();
+    $("#savedList, .overlay").hide();
+});
+
 function initMoviespin() {
    result = MoviesAPI.getChoices();
     if(result["Length"] >= 5) {
@@ -174,6 +184,7 @@ function fetchMovie() {
 		
 		document.getElementById("likeImg").style.display = "";
 		document.getElementById("dislikeImg").style.display = "";
+        document.getElementById("watchlaterImg").style.display = "";
 		
 		document.getElementById("nextMovieRating").innerHTML = result["Rating"];
 		document.getElementById("nextMovieRuntime").innerHTML = result["Runtime"];
@@ -373,6 +384,6 @@ document.getElementById("resetUser").addEventListener("click", function(data) {
 	});
 });
 
-document.getElementById("watchLater").addEventListener("click", function(data) {
+document.getElementById("watchlaterImg").addEventListener("click", function(data) {
 	watchLater();
 });

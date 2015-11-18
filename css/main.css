@@ -241,7 +241,7 @@ a {
     left:30px;
     width:400px;
     height:250px;
-    background-color:rgb(107, 94, 87);/*rgba(52, 27, 43, 0.8);/*, 0.498039);*/
+    background-color:rgb(117, 104, 97);/*rgb(107, 94, 87);*//*rgba(52, 27, 43, 0.8);/*, 0.498039);*/
     border-radius: 5px;
     opacity:1;
     z-index:1002;

@@ -20,6 +20,17 @@
 	border-radius: 9px;
 }
 
+#watchlaterImg {
+	width: 10%;
+	max-width: 140px;
+	min-width: 70px;
+	position: fixed;
+	left: calc(50% - 60px);
+	bottom: -15px;
+	background: white;
+	border-radius: 9px;
+}
+
 #watchLater {
 	position: fixed;
 	bottom: 15px;
@@ -197,7 +208,7 @@ a {
 #openSaved {
     position: fixed;
     bottom: 5px;
-    left: calc(50% - 125px);
+    left: 120px;/*calc(50% - 125px);*/
 }
 
 #savedList {

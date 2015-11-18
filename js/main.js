@@ -45,7 +45,7 @@ function keyPressed(keyID) {
 		else if(keyID == "Right") {
 			swipeRight();
 		}
-		else if(keyID == "Enter") {
+		else if(keyID == "Enter" || keyID == "Down") {
 			watchLater();
 		}
 	}

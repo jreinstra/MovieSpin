@@ -11,6 +11,16 @@ $(document).ready(function() {
     initMoviespin();
 });
 
+$("#openSaved").click(function() {
+    $("#openSaved").hide();
+    $("#savedList, .overlay").show();
+});
+
+$("#closeSaved").click(function() {
+    $("#openSaved").show();
+    $("#savedList, .overlay").hide();
+});
+
 function initMoviespin() {
    result = MoviesAPI.getChoices();
     if(result["Length"] >= 5) {

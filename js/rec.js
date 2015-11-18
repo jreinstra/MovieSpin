@@ -36,12 +36,7 @@ function getMovieScore(movie, choices) {
     var genScore = listScore(movie, choices, "Genres");
     var popScore = movie["PopularityScore"];
     
-    var result = 100 * actScore + 200 * genScore;// + 40 * popScore;
-    if (movie["Title"] == "Ant-Man") {
-        console.log(movie["Title"]);
-        console.log(actScore + " " + genScore);// + " " + popScore);
-        console.log(result);
-    }
+    var result = 100 * actScore + 200 * genScore;// + 40 * popScore; - turns out it works pretty well without pop score
     return result;
 }
 

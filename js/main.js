@@ -12,17 +12,24 @@ $(document).ready(function() {
 });
 
 $("#openSaved").click(function() {
+    var savedList = MoviesAPI.getSavedList();
+    var savedListHTML = "<ul>";
+    for(var i in savedList) {
+        savedListHTML += "<li>" + savedList[i][1] + "</li>";
+    }
+    savedListHTML += "</ul>";
+    $("#savedMoviesList").html(savedListHTML);
     $("#openSaved").hide();
-    $("#savedList, .overlay").show();
+    $("#savedMovies, .overlay").show();
 });
 
 $("#closeSaved").click(function() {
     $("#openSaved").show();
-    $("#savedList, .overlay").hide();
+    $("#savedMovies, .overlay").hide();
 });
 
 function initMoviespin() {
-   result = MoviesAPI.getChoices();
+    var result = MoviesAPI.getChoices();
     if(result["Length"] >= 5) {
         document.getElementById("welcomeDiv").style.display = "none";
         document.getElementById("welcomeBackDiv").style.display = "";
@@ -220,6 +227,10 @@ function fetchMovie() {
 }
 
 function likeMovie(movieID, likesMovie) {
+    if(likesMovie == null) {
+        $("#openSaved").show();
+    }
+    
 	MoviesAPI.likeMovie(movieID, likesMovie, function(result) {
 		document.getElementById("addMovieButton").style.display = "none";
 		document.getElementById("addMovieID").value = "";
@@ -350,6 +361,11 @@ document.getElementById("getStarted").addEventListener("click", function(data) {
 document.getElementById("getRestarted").addEventListener("click", function(data) {
 	document.getElementById("welcomeBackDiv").style.display = "none";
 	document.getElementById("welcomeHeader").style.display = "none";
+    
+    if(MoviesAPI.getSavedList().length > 0) {
+        $("#openSaved").show();
+    }
+    
 	nextMovie();
 });
 

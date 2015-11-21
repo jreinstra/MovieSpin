@@ -207,11 +207,13 @@ a {
 
 #openSaved {
     position: fixed;
-    bottom: 5px;
-    left: 120px;/*calc(50% - 125px);*/
+    top: 10px;
+    left: calc(50% - 125px);
+    height: 45px;
+    line-height: 0em;
 }
 
-#savedList {
+#savedMovies {
     position: fixed;
     top: 50px;
     left: calc(50% - 200px);

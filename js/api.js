@@ -64,7 +64,20 @@ var MoviesAPI = {
     
     getNextMovie: function(callback) {
         recommend(myMovies, callback);
+    },
+    
+    getSavedList: function() {
+        result = []
+        for(var i in myMovies["saved"]) {
+            var id = myMovies["saved"][i];
+            result.push([id, titleFromID(id)]);
+        }
+        return result;
     }
+}
+
+function titleFromID(movieID) {
+    return db().filter({MovieID:movieID}).limit(1).get()[0].Title;
 }
 
 function httpGet(theUrl) {

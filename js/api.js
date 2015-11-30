@@ -44,6 +44,11 @@ var MoviesAPI = {
     },
     
     likeMovie: function(movieID, likesMovie, callback) {
+        var indexSaved = myMovies["saved"].indexOf(movieID);
+        if(indexSaved != -1) {
+            myMovies["saved"].splice(indexSaved, 1);
+        }
+        
         if(likesMovie == null) {
             myMovies["saved"].push(movieID);
         }

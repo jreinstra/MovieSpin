@@ -15,7 +15,9 @@ $("#openSaved").click(function() {
     var savedList = MoviesAPI.getSavedList();
     var savedListHTML = "<ul>";
     for(var i in savedList) {
-        savedListHTML += '<li><a class="gotoMovie" id="' + savedList[i][0] + '">' + savedList[i][1] + '</a></li>';
+        savedListHTML += '<li><a class="gotoMovie" id="' + savedList[i][0] + '">' + savedList[i][1] + '</a> - ' + 
+            '<a target="_blank" href="' + amazonLink(savedList[i][1]) + '">Amazon</a>' +
+            '</li>';
     }
     savedListHTML += "</ul>";
     $("#savedMoviesList").html(savedListHTML);
@@ -225,17 +227,22 @@ function fetchMovie(movieID) {
 		document.getElementById("nextMovieGenres").innerHTML = genreString;
 		
 
-		/*document.getElementById("referralLinks").innerHTML = "";
-		if(metadata["NetflixID"]) {
+		document.getElementById("referralLinks").innerHTML = "";
+		/*if(metadata["NetflixID"]) {
 			document.getElementById("referralLinks").innerHTML +=
 				"<a class=\"button netflixButton\" target=\"_blank\" href=\"http://www.netflix.com/WiMovie/" + metadata["NetflixID"] + "\">View on Netflix</a>";
 		}*/
+        $("#referralLinks").html('<a target="_blank" class="button amazonButton" href="' + amazonLink(result["Title"]) + '">View on Amazon</a>');
 		
 		animate(document.getElementById("innerBlock"), 0, "0s", function() {
 			animationActive = false;
 		});
 		allowNextMovieInput = true;
     });
+}
+
+function amazonLink(movieTitle) {
+    return 'http://www.amazon.com/s/field-keywords=' + movieTitle + '&tag=movi0ac9-20';
 }
 
 function likeMovie(movieID, likesMovie) {

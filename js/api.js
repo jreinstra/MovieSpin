@@ -62,8 +62,13 @@ var MoviesAPI = {
         callback();
     },
     
-    getNextMovie: function(callback) {
-        recommend(myMovies, callback);
+    getNextMovie: function(movieID, callback) {
+        if(movieID != null) {
+            callback(db().filter({MovieID:movieID}).limit(1).get()[0]);
+        }
+        else {
+            recommend(myMovies, callback);
+        }
     },
     
     getSavedList: function() {

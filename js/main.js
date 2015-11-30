@@ -15,18 +15,28 @@ $("#openSaved").click(function() {
     var savedList = MoviesAPI.getSavedList();
     var savedListHTML = "<ul>";
     for(var i in savedList) {
-        savedListHTML += "<li>" + savedList[i][1] + "</li>";
+        savedListHTML += '<li><a class="gotoMovie" id="' + savedList[i][0] + '">' + savedList[i][1] + '</a></li>';
     }
     savedListHTML += "</ul>";
     $("#savedMoviesList").html(savedListHTML);
-    $("#openSaved").hide();
-    $("#savedMovies, .overlay").show();
+    $("#openSaved, #innerBlock").hide();
+    $("#savedMovies").show();
+    
+    // Re-add listeners for saved movies
+    $(".gotoMovie").click(gotoMovieClicked);
 });
 
 $("#closeSaved").click(function() {
-    $("#openSaved").show();
-    $("#savedMovies, .overlay").hide();
+    $("#openSaved, #innerBlock").show();
+    $("#savedMovies").hide();
 });
+
+function gotoMovieClicked(e) {
+    $("#openSaved, #innerBlock").show();
+    $("#savedMovies").hide();
+    var movieID = e.currentTarget.id;
+    fetchMovie(movieID);
+}
 
 function initMoviespin() {
     var result = MoviesAPI.getChoices();
@@ -169,11 +179,13 @@ function nextMovie() {
 	document.getElementById("nextMovie").style.display = "none";
 	document.getElementById("nextMovieLoading").style.display = "";
 	
-    setTimeout(fetchMovie, 50);
+    setTimeout(function() {
+        fetchMovie(null);
+    }, 50);
 }
 
-function fetchMovie() {
-    MoviesAPI.getNextMovie(function(result) {
+function fetchMovie(movieID) {
+    MoviesAPI.getNextMovie(movieID, function(result) {
 		var title = result["Title"] + " (" + result["Year"] + ")";
 		document.getElementById("nextMovieTitle").innerHTML = title;
 		var titleFontSize = Math.floor(95.0/(title.length));

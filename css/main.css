@@ -1,4 +1,5 @@
 #banner {
+    background-image: url("/images/blue.png");
     background-size: cover;
 }
 
@@ -54,6 +55,7 @@
 	width: 81px;
 	height: 40px;
 	line-height: 0em;
+    color:white;
 }
 
 #fbLike {

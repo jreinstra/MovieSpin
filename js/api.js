@@ -87,7 +87,8 @@ var MoviesAPI = {
 }
 
 function titleFromID(movieID) {
-    return db().filter({MovieID:movieID}).limit(1).get()[0].Title;
+    var movie = db().filter({MovieID:movieID}).limit(1).get()[0];
+    return movie["Title"] + " (" + movie["Year"] + ")";
 }
 
 function httpGet(theUrl) {

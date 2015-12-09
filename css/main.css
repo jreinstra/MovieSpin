@@ -69,17 +69,6 @@
 	color: white;
 }
 
-#paypalDonate {
-	position: fixed;
-	bottom: 10px;
-	left: calc(50% + 5px);
-	width: 100px;
-	
-	padding-top: 30px;
-	text-align: center;
-	color: white;
-}
-
 #u_0_3 {
 	color: white !important;
 }
@@ -91,17 +80,8 @@
 
 #addMovieText {
 	float: left;
-	width: 80%;
 	display: inline-block;
 	border-color: white;
-}
-
-#addMovieButton {
-	min-width: 0;
-	width: 58px;
-	float:right;
-	height: 49px;
-	line-height: 0em;
 }
 
 #nextMovieTitle {
@@ -195,7 +175,6 @@
 }
 
 .as-result {
-	width:80%;
 	list-style:none;
 }
 

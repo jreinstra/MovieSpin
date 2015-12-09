@@ -81,7 +81,6 @@ function addMovieKeyPressed(keyID) {
 		}
 		else if(keyID == "Enter" && addMovieCounter != -1) {
 			fireEvent(suggestions[addMovieCounter], "click");
-			fireEvent(document.getElementById("addMovieButton"), "click");
 		}
 		
 		if(addMovieCounter != -1) {
@@ -169,7 +168,7 @@ function addSuggestionListeners() {
 		document.getElementById("addMovieID").value = this.getAttribute("value");
 		document.getElementById("addMovieText").value = this.innerHTML;
 		document.getElementById("addMovieSuggestions").innerHTML = "";
-		document.getElementById("addMovieButton").style.display = "";
+        likeMovie(document.getElementById("addMovieID").value, true);
 	};
 	 
     for(var i=0;i<classname.length;i++){
@@ -394,10 +393,6 @@ document.getElementById("addMovieText").addEventListener("keydown", function(dat
 		autoSuggest();
 		addMovieKeyPressed(data.keyIdentifier);
 	}, 10);
-});
-
-document.getElementById("addMovieButton").addEventListener("click", function(data) {
-	likeMovie(document.getElementById("addMovieID").value, true);
 });
 
 document.getElementById("likeImg").addEventListener("click", function(data) {

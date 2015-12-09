@@ -17,7 +17,12 @@ function initDatabase(callback) {
     
     if(!localStorage["moviesData"]) {
         httpGetAsync("js/movies.json", function(text) {
-            localStorage["moviesData"] = text;
+            try {
+                localStorage["moviesData"] = text;
+            }
+            catch(err) {
+                console.log("Failed to cache movie database.");
+            }
             callback(text);
         });
     }

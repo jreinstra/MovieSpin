@@ -86,10 +86,10 @@ function addMovieKeyPressed(keyID) {
 		if(addMovieCounter != -1) {
 			suggestions[addMovieCounter].style.backgroundColor = "#333";
 			if(addMovieCounter > 0) {
-				suggestions[addMovieCounter - 1].style.backgroundColor = "rgba(52, 27, 43, 0.2)";
+				suggestions[addMovieCounter - 1].style.backgroundColor = "rgba(52, 27, 43, 0.7)";
 			}
 			if(addMovieCounter < suggestions.length - 1) {
-				suggestions[addMovieCounter + 1].style.backgroundColor = "rgba(52, 27, 43, 0.2)";
+				suggestions[addMovieCounter + 1].style.backgroundColor = "rgba(52, 27, 43, 0.7)";
 			}
 		}
 	}

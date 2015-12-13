@@ -1,0 +1,24 @@
+#nextMovieLeft {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+#nextMovieDescription {
+    font-size: 1.3em;
+}
+
+#nextMovieRight {
+    width: 100%;
+}
+
+#nextMovieMetadata span {
+}
+
+#referralLinks {
+    margin-top: 20px;
+}
+
+#banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ),
+        url('/images/blue.png');
+}

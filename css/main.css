@@ -110,8 +110,8 @@
 	line-height: 1.1em;
 }
 
-#nextMovieMetadata {
-	text-align: left;
+#nextMovieMetadata > span {
+	display: block;
 }
 
 #nextMovieDescription {
@@ -209,13 +209,16 @@ a {
 }
 
 #savedMovies {
-    position: fixed;
+    position: relative;
     top: 65px;
-    left: calc(50% - 200px);
+    /*left: calc(50% - 237px);*/
+    margin: 0 auto;
     
     padding-top: 25px;
+    padding-bottom: 15px;
     
-    width:475px;
+    max-width:475px;
+    width: 80%;
     
     background-color: rgba(52, 27, 43, 0.5);
 }

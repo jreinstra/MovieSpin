@@ -12,6 +12,7 @@
 		<!--[if lte IE 8]><script src="assets/css/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="css/twenty.css" />
 		<link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" media="(max-width: 736px)" href="css/mobile.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie/v9.css" /><![endif]-->
@@ -69,10 +70,10 @@
 								</div>
 								<div id="nextMovieRight">
 									<p id="nextMovieMetadata">
-										<strong>Genre: </strong><span id="nextMovieGenres"></span><br>
-										<strong>Actors: </strong><span id="nextMovieActors"></span><br>
-										<strong>Rating: </strong><span id="nextMovieRating"></span><br>
-										<strong>Runtime: </strong><span id="nextMovieRuntime"></span>
+                                        <span><strong>Genre: </strong><span id="nextMovieGenres"></span></span>
+										<span><strong>Actors: </strong><span id="nextMovieActors"></span></span>
+										<span><strong>Rating: </strong><span id="nextMovieRating"></span></span>
+										<span><strong>Runtime: </strong><span id="nextMovieRuntime"></span></span>
 									</p>
 									<div id="referralLinks"></div>
 								</div>
@@ -94,13 +95,13 @@
 					</div>
                     <button id="openSaved" class="button" style="display:none">View Saved Movies</button>
                     <div id="savedMovies" style="display:none">
+                        <a href="#"><span id="closeSaved" class="fa fa-times fa-lg"></span></a>
                         <ul id="savedMoviesList">
                             <li>Indiana Jones 7</li>
                             <li>Kung Fury</li>
                             <li>Ant Man</li>
                             <li>The Man with the Dragon Tattoo 2</li>
                         </ul>
-                        <a href="#"><span id="closeSaved" class="fa fa-times fa-lg"></span></a>
                     </div>
 				</section>
 		</div>

@@ -241,7 +241,7 @@ function fetchMovie(movieID) {
 }
 
 function amazonLink(movieTitle) {
-    return 'http://www.amazon.com/s/field-keywords=' + movieTitle + '&tag=movi0ac9-20';
+    return 'http://www.amazon.com/s/field-keywords=' + movieTitle + '?tag=movi0ac9-20';
 }
 
 function likeMovie(movieID, likesMovie) {

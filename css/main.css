@@ -4,36 +4,35 @@
 }
 
 #dislikeImg {
-	width: 10%;
-	max-width: 140px;
-	min-width: 70px;
-	position: fixed;
 	right: -15px;
 	top: calc(50% - 60px);
-	background: white;
-	border-radius: 9px;
 }
 
 #likeImg {
-	width: 10%;
-	max-width: 140px;
-	min-width: 70px;
-	position: fixed;
 	left: -15px;
 	top: calc(50% - 60px);
-	background: white;
-	border-radius: 9px;
 }
 
 #watchlaterImg {
-	width: 10%;
+	bottom: -15px;
+    
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+}
+
+.nextImg {
+    width: 10%;
 	max-width: 140px;
 	min-width: 70px;
 	position: fixed;
-	left: calc(50% - 60px);
-	bottom: -15px;
-	background: white;
-	border-radius: 9px;
+    
+    background: white;
+    border-radius: 9px;
+}
+
+.nextImg:hover {
+    opacity: 0.7;
 }
 
 #watchLater {
@@ -145,7 +144,10 @@
 .amazonButton {
     position: relative;
     top: 10px;
-    right: 10px;
+    
+    margin: 0 auto;
+    right: 0;
+    left: 0;
     
     height: 45px;
     font-size: 12px;

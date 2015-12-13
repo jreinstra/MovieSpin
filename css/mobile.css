@@ -5,6 +5,9 @@
 
 #nextMovieDescription {
     font-size: 1.3em;
+    width: 100%;
+    padding-left: 45px;
+    padding-right: 45px;
 }
 
 #nextMovieRight {

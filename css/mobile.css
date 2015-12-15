@@ -1,10 +1,23 @@
+/*#welcomeBackDiv, #welcomeDiv {
+    padding-top: 20px;
+}*/
+
+#welcomeHeader {
+    position: relative;
+    bottom: 30px;
+}
+
 #nextMovieLeft {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+}
+
+#nextMovieRight {
+    padding-top: 5px;
 }
 
 #nextMovieDescription {
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 100%;
     padding-left: 45px;
     padding-right: 45px;
@@ -14,15 +27,26 @@
     width: 100%;
 }
 
-#nextMovieMetadata span {
+#nextMovieMetadata > span {
+    padding-left: 45px;
+    padding-right: 45px;
 }
 
 #referralLinks {
-    margin-top: 20px;
+    margin-top: 5px;
     margin-right: 15px;
+}
+
+#openSaved {
+    height: 35px;
 }
 
 #banner {
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ),
         url('/images/blue.png');
+    padding-top: 55px;
+}
+
+header {
+    margin-bottom: 10px !important;
 }

@@ -151,9 +151,11 @@
     right: 0;
     left: 0;
     
-    height: 45px;
+    height: 35px;
+    width: 160px;
+    min-width: 0px;
     font-size: 12px;
-    line-height: 3.5;
+    line-height: 2.9em;
 }
 
 

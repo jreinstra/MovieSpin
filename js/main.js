@@ -231,7 +231,10 @@ function fetchMovie(movieID) {
 			document.getElementById("referralLinks").innerHTML +=
 				"<a class=\"button netflixButton\" target=\"_blank\" href=\"http://www.netflix.com/WiMovie/" + metadata["NetflixID"] + "\">View on Netflix</a>";
 		}*/
-        $("#referralLinks").html('<a target="_blank" class="button amazonButton" href="' + amazonLink(title) + '">View on Amazon</a>');
+        $("#referralLinks").html(
+            '<a target="_blank" class="button amazonButton" href="' + amazonLink(title) + '">View on Amazon</a><br/>' +
+            '<a target="_blank" style="top:20px;" class="button amazonButton" href="' + itunesLink(title) + '">View on iTunes</a>'
+        );
 		
 		animate(document.getElementById("innerBlock"), 0, "0s", function() {
 			animationActive = false;
@@ -243,6 +246,16 @@ function fetchMovie(movieID) {
 function amazonLink(movieTitle) {
     return 'http://www.amazon.com/s/field-keywords=' + movieTitle + '?tag=movi0ac9-20';
 }
+
+function itunesLink(movieTitle) {
+    movieTitle = movieTitle.substring(0, movieTitle.lastIndexOf("(") - 1);
+    movieTitle = movieTitle.replace(/ /g, "");
+    movieTitle = movieTitle.replace(/:/g, "");
+    movieTitle = movieTitle.replace("(", "");
+    movieTitle = movieTitle.replace(")", "");
+    return 'https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=movie%2f' + movieTitle;
+}
+
 
 function likeMovie(movieID, likesMovie) {
     if(likesMovie == null) {

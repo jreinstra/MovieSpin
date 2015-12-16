@@ -253,7 +253,7 @@ function itunesLink(movieTitle) {
     movieTitle = movieTitle.replace(/:/g, "");
     movieTitle = movieTitle.replace("(", "");
     movieTitle = movieTitle.replace(")", "");
-    return 'https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=movie%2f' + movieTitle + "?at=1001l4TP";
+    return 'https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=movie%2f' + movieTitle + "&at=1001l4TP";
 }
 
 

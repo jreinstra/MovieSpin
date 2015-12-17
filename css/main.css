@@ -216,9 +216,7 @@ a {
     height: 45px;
     line-height: 0em;
     
-    margin: 0 auto;
-    left: 0;
-    right: 0;
+    left: calc(50% - 124px);
 }
 
 #savedMovies {

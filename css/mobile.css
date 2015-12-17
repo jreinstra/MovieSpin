@@ -37,6 +37,10 @@
     margin-right: 15px;
 }
 
+.amazonButton {
+    display: block;
+}
+
 #openSaved {
     height: 35px;
 }

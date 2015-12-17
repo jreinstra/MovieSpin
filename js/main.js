@@ -232,8 +232,8 @@ function fetchMovie(movieID) {
 				"<a class=\"button netflixButton\" target=\"_blank\" href=\"http://www.netflix.com/WiMovie/" + metadata["NetflixID"] + "\">View on Netflix</a>";
 		}*/
         $("#referralLinks").html(
-            '<a target="_blank" class="button amazonButton" href="' + amazonLink(title) + '">View on Amazon</a><br/>' +
-            '<a target="_blank" style="top:20px;" class="button amazonButton" href="' + itunesLink(title) + '">View on iTunes</a>'
+            '<a target="_blank" style="margin-bottom: 10px;" class="button amazonButton" href="' + amazonLink(title) + '">View on Amazon</a><br/>' +
+            '<a target="_blank" class="button amazonButton" href="' + itunesLink(title) + '">View on iTunes</a>'
         );
 		
 		animate(document.getElementById("innerBlock"), 0, "0s", function() {
